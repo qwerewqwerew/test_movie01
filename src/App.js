@@ -1,42 +1,22 @@
-import React from "react"
+import React from 'react';
 
 class App extends React.Component {
-	constructor(props) {
-        super(props);
-        console.log('hello');
-    }
-	state = { count: 0 }
-
-	add = () => {
-		this.setState((current) => ({
-			count: this.state.count + 1,
-		}))
-	}
-
-	minus = () => {
-		this.setState((current) => ({
-			count: this.state.count - 1,
-		}))
-	}
+    state = {
+        isLoading : true,
+		movies: [],
+		
+    };
+	
 	componentDidMount() {
-        console.log('component rendered');
+        setTimeout(() => {
+            this.setState({ isLoading: false, movies: movies });
+        }, 5000);
     }
-	componentDidUpdate() {
-        console.log('I just updated');
-    }
-	componentWillUnmount() {
-        console.log('Goodbye, cruel world'); 
-    }
-	render() {
-		console.log("I'm render");
-		return (
-			<div>
-				<h1>The number is: {this.state.count} </h1>
-				<button onClick={this.add}>Add</button>
-				<button onClick={this.minus}>Minus</button>
-			</div>
-		)
-	}
+
+    render() {
+		const { isLoading } = this.state;
+        return <div> {isLoading ? 'Loading...' : 'We are ready'} </div>;    }
+		
 }
 
-export default App
+export default App;
