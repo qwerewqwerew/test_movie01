@@ -1,41 +1,42 @@
-import React from "react";
+import React from "react"
 
-function Fruit({ name, picture }) {
-	return (
-		<div>
-			<h2> 내가 좋아하는 {name}</h2>
-			<img src={picture} />
-		</div>
-	);
+class App extends React.Component {
+	constructor(props) {
+        super(props);
+        console.log('hello');
+    }
+	state = { count: 0 }
+
+	add = () => {
+		this.setState((current) => ({
+			count: this.state.count + 1,
+		}))
+	}
+
+	minus = () => {
+		this.setState((current) => ({
+			count: this.state.count - 1,
+		}))
+	}
+	componentDidMount() {
+        console.log('component rendered');
+    }
+	componentDidUpdate() {
+        console.log('I just updated');
+    }
+	componentWillUnmount() {
+        console.log('Goodbye, cruel world'); 
+    }
+	render() {
+		console.log("I'm render");
+		return (
+			<div>
+				<h1>The number is: {this.state.count} </h1>
+				<button onClick={this.add}>Add</button>
+				<button onClick={this.minus}>Minus</button>
+			</div>
+		)
+	}
 }
-const fruitILike = [
-	{
-		id: 1,
-		name: "바나나",
-		image: "http://qwerew.cafe24.com/images/banana.png",
-	},
-	{
-		id: 2,
-		name: "오렌지",
-		image: "http://qwerew.cafe24.com/images/orange.png",
-	},
-	{
-		id: 3,
-		name: "사과",
-		image: "http://qwerew.cafe24.com/images/apple.png",
-	},
-	{
-		id: 4,
-		name: "메론",
-		image: "http://qwerew.cafe24.com/images/melon.jpg",
-	},
-];
 
-const renderFruit = dish => <Fruit key={dish.id} name={dish.name} picture={dish.image} />;
-
-function App() {
-  console.log(fruitILike.map(renderFruit));
-	return <div>{fruitILike.map(renderFruit)}</div>;
-}
-
-export default App;
+export default App
