@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      let number = [273, 52, 103, 32, 57]
+        number=number.map(function(value,index,array){
+            return value * value
+        })
+        number.forEach(console.log)
+      </script>
+      <script>
+          let teams=['망고','땅콩이','얼룩이'];
+          //map 함수를 사용해서 조원명에 화이팅!
+          teams=teams.map(function(v,i,a){
+              return v + '화이팅!'
+          })
+          document.write(teams)
+      </script>
+</body>
+</html>
