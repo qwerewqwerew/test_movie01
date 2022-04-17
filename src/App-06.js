@@ -24,13 +24,13 @@ class App extends React.Component {
 		const { isLoading, movies } = this.state
 		return (
 			<div>
-				<section className="container">
+				<section class="container">
 					{isLoading ? (
-						<div className="loader">
-							<span className="loader__text">"로딩중..."</span>
+						<div class="loader">
+							<span class="loader__text">"로딩중..."</span>
 						</div>
 					) : (
-						<div className="movies">
+						<div class="movies">
 							{movies.map((movie) => (
 								<Movie
 									key={movie.id}
@@ -39,7 +39,6 @@ class App extends React.Component {
 									title={movie.title}
 									summary={movie.summary}
 									poster={movie.medium_cover_image}
-									genres={movie.genres}
 								/>
 							))}
 						</div>
