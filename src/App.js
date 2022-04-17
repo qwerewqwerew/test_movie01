@@ -1,22 +1,45 @@
-import React from 'react';
-
+import React from "react";
+import axios from "axios";
+import Movie from "./Movie";
+import './App.css';
 class App extends React.Component {
-    state = {
-        isLoading : true,
+	state = {
+		isLoading: true,
 		movies: [],
-		
-    };
-	
-	componentDidMount() {
-        setTimeout(() => {
-            this.setState({ isLoading: false, movies: movies });
-        }, 5000);
-    }
+	};
+	getMovies = async () => {
+		const {
+			data: {
+				data: { movies },
+			},
+		} = await axios.get("https://yts-proxy.now.sh/list_movies.json?sort_by=rating");
+		this.setState({ movies, isLoading: false });
+	};
 
-    render() {
-		const { isLoading } = this.state;
-        return <div> {isLoading ? 'Loading...' : 'We are ready'} </div>;    }
-		
+	componentDidMount() {
+		this.getMovies();
+	}
+
+	render() {
+		const { isLoading, movies } = this.state;
+		return (
+			<div>
+				<section class="container">
+					{isLoading ? (
+						<div class="loader">
+							<span class="loader__text">"로딩중..."</span>
+						</div>
+					) : (
+						<div class="movies">
+							{movies.map(movie => (
+								<Movie key={movie.id} id={movie.id} year={movie.year} title={movie.title} summary={movie.summary} poster={movie.medium_cover_image} />
+							))}
+						</div>
+					)}
+				</section>
+			</div>
+		);
+	}
 }
 
 export default App;
