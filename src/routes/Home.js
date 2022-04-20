@@ -1,9 +1,8 @@
 import React from "react"
 import axios from "axios"
-import Movie from "./Movie"
-import "./App.css"
-class App extends React.Component {
-	/* state 객체 : 컴포넌트에 동적인 속성전달 */
+import Movie from "../components/Movie"
+import "./Home.css"
+class Home extends React.Component {
 	state = {
 		isLoading: true,
 		movies: [],
@@ -25,13 +24,13 @@ class App extends React.Component {
 		const { isLoading, movies } = this.state
 		return (
 			<div>
-				<section class="container">
+				<section className="container">
 					{isLoading ? (
-						<div class="loader">
-							<span class="loader__text">"로딩중..."</span>
+						<div className="loader">
+							<span className="loader__text">"로딩중..."</span>
 						</div>
 					) : (
-						<div class="movies">
+						<div className="movies">
 							{movies.map((movie) => (
 								<Movie
 									key={movie.id}
@@ -40,6 +39,7 @@ class App extends React.Component {
 									title={movie.title}
 									summary={movie.summary}
 									poster={movie.medium_cover_image}
+									genres={movie.genres}
 								/>
 							))}
 						</div>
@@ -50,7 +50,4 @@ class App extends React.Component {
 	}
 }
 
-export default App
-/* app 컴포넌트는 movie의 부모 컴포넌트 이며 movie 의 데이터를 전달받아
-	자식 무비 컴포넌트의 state로 전달하고 있다
-*/
+export default Home
