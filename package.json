@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.26.1",
     "cra-template": "1.1.3",
+    "gh-pages": "^3.2.3",
     "install": "^0.13.0",
     "prop-types": "^15.8.1",
     "react": "^18.0.0",
@@ -36,5 +37,5 @@
       "last 1 safari version"
     ]
   },
-  "homepage":"https://Yoondinosour.github.io/movie_app_2022"
+  "homepage": "https://Yoondinosour.github.io/movie_app_2022"
 }
