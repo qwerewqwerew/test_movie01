@@ -4,6 +4,7 @@ import "./Movie.css"
 import {Link} from "react-router-dom"
 
 function Movie({title,year,summary,poster, genres}){
+   
     return (
         <div className="movie__data">
             <Link to={{ pathname:"/movie-detail", state:{year,title,summary,poster,genres}}}>
@@ -15,7 +16,7 @@ function Movie({title,year,summary,poster, genres}){
                         return <li key={index} className="movie_genre">{genre}</li>
                     })}
                 </ul>
-                <p className="movie__summary">{summary.slice(0,180)}...</p>
+                <p className="movie__summary">{summary.slice(0,180)}</p>
             </Link>
         </div>
     )
